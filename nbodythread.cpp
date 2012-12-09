@@ -22,7 +22,7 @@ void NBodyThread::run()
     {
         model = new nbodyni();
         int device = usingGPU ? CL_DEVICE_TYPE_GPU : CL_DEVICE_TYPE_CPU;
-        usingTiled ? model -> setDevice(device, "kernelt.txt") : model->setDevice(device, "kerneln.txt");
+        usingTiled ? model -> setDevice(device, "kernelt.c") : model->setDevice(device, "kerneln.c");
     }
     else
     {
