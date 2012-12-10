@@ -20,9 +20,20 @@ void NBodyThread::run()
     // configure the model object according to the parameters set on this thread
     if(usingOpenCL)
     {
-        model = new nbodyni();
-        int device = usingGPU ? CL_DEVICE_TYPE_GPU : CL_DEVICE_TYPE_CPU;
-        usingTiled ? model -> setDevice(device, "kernelt.c") : model->setDevice(device, "kerneln.c");
+        if (useDualGPU)
+        {
+            model = new nbodymg();
+            if (unroll)
+                model -> setDevice(0, "kernelmgur.txt");
+            else
+                model -> setDevice(0, "kernelmg.txt");
+        }
+        else
+        {
+            model = new nbodyni();
+            int device = usingGPU ? CL_DEVICE_TYPE_GPU : CL_DEVICE_TYPE_CPU;
+            usingTiled ? model -> setDevice(device, "kernelt.txt") : model->setDevice(device, "kerneln.txt");
+        }
     }
     else
     {
@@ -155,4 +166,14 @@ void NBodyThread::setTileSize(int t)
 void NBodyThread::setUsingTiled(bool u)
 {
     usingTiled = u;
+}
+
+void NBodyThread::setDualGPU(bool u)
+{
+    useDualGPU = u;
+}
+
+void NBodyThread::setUnroll(bool u)
+{
+    unroll = u;
 }

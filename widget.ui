@@ -97,13 +97,27 @@
         </widget>
        </item>
        <item row="3" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Dual GPU:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="chkdualgpu">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
         <widget class="QLabel" name="tileSizeLabel">
          <property name="text">
           <string>Tile Size:</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="5" column="1">
         <widget class="QSpinBox" name="tileSizeSpinBox">
          <property name="enabled">
           <bool>true</bool>
@@ -119,14 +133,14 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="bodyCountLabel">
          <property name="text">
           <string>Body Count:</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="6" column="1">
         <widget class="QSpinBox" name="bodyCountSpinBox">
          <property name="minimum">
           <number>0</number>
@@ -142,7 +156,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="7" column="0">
         <widget class="QPushButton" name="startButton">
          <property name="minimumSize">
           <size>
@@ -155,7 +169,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="7" column="1">
         <widget class="QPushButton" name="stopButton">
          <property name="enabled">
           <bool>false</bool>
@@ -168,6 +182,20 @@
          </property>
          <property name="text">
           <string>Stop</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="chkunroll">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Loop Unroll</string>
          </property>
         </widget>
        </item>

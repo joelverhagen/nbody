@@ -11,14 +11,16 @@ SOURCES += main.cpp\
     nbodythread.cpp \
     nbodyni.cpp \
     nbodyref.cpp \
-    basenbody.cpp
+    basenbody.cpp \
+    nbodymg.cpp
 
 HEADERS  += widget.h \
     nbodypanel.h \
     nbodythread.h \
     nbodyni.h \
     nbodyref.h \
-    basenbody.h
+    basenbody.h \
+    nbodymg.h
 
 FORMS    += widget.ui
 

@@ -9,6 +9,7 @@
 #include "basenbody.h"
 #include "nbodyni.h"
 #include "nbodyref.h"
+#include "nbodymg.h"""
 #include "nbodypanel.h"
 
 class NBodyThread : public QThread
@@ -29,6 +30,8 @@ public slots:
     void setUsingTiled(bool u);
     void setUsingGPU(bool u);
     void setUsingOpenCL(bool u);
+    void setDualGPU(bool u);
+    void setUnroll(bool u);
 
 private:
     bool isStepping;
@@ -41,6 +44,8 @@ private:
     bool usingTiled;
     bool usingGPU;
     bool usingOpenCL;
+    bool useDualGPU;
+    bool unroll;
 };
 
 #endif // NBODYMODELTHREAD_H

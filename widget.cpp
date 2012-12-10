@@ -26,6 +26,8 @@ void Widget::startSimulation()
     thread.setUsingGPU(ui->useGPUCheckBox->isChecked());
     thread.setUsingOpenCL(ui->useOpenCLCheckBox->isChecked());
     thread.setUsingTiled(ui->useTilesCheckBox->isChecked());
+    thread.setDualGPU(ui->chkdualgpu->isChecked());
+    thread.setUnroll(ui->chkunroll->isChecked());
 
     // start the thread
     thread.start();
