@@ -24,15 +24,15 @@ void NBodyThread::run()
         {
             model = new nbodymg();
             if (unroll)
-                model -> setDevice(0, "kernelmgur.txt");
+                model -> setDevice(0, "kernelmgur.cl");
             else
-                model -> setDevice(0, "kernelmg.txt");
+                model -> setDevice(0, "kernelmg.cl");
         }
         else
         {
             model = new nbodyni();
             int device = usingGPU ? CL_DEVICE_TYPE_GPU : CL_DEVICE_TYPE_CPU;
-            usingTiled ? model -> setDevice(device, "kernelt.txt") : model->setDevice(device, "kerneln.txt");
+            usingTiled ? model -> setDevice(device, "kernelt.cl") : model->setDevice(device, "kerneln.cl");
         }
     }
     else
