@@ -49,15 +49,15 @@ void NBodyThread::run()
 
     for(int i = 0; i < bodyCount; i++)
     {
-        positions[4 * i + 0] = randInt(-1000, 1000);
-        positions[4 * i + 1] = randInt(-1000, 1000);
-        positions[4 * i + 2] = 0;
+        positions[4 * i + 0] = randInt(3, 50);
+        positions[4 * i + 1] = randInt(3, 50);
+        positions[4 * i + 2] = randInt(3, 50);
 
         velocities[4 * i + 0] = 0;
         velocities[4 * i + 1] = 0;
         velocities[4 * i + 2] = 0;
 
-        masses[i] = randInt(1000000, 5000000);
+        masses[i] = randInt(1, 1000);
     }
 
     if(!model->setData(positions, velocities, masses, bodyCount))

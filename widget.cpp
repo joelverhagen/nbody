@@ -48,7 +48,7 @@ void Widget::startSimulation()
     sample = new float[4 * thread.getBodyCount()];
 
     // sample the simulation for display 60 times a second
-    sampleTimer.start(1000 / 60);
+    sampleTimer.start(1000 / 30);
     counterTimer.start(1000);
 }
 
@@ -86,8 +86,8 @@ void Widget::reportCounts()
     ui->averageLineEdit->setText(QString().sprintf("%.2f", stepSum / (double) (stepCount - 1)));
 
     // stop after 20 seconds
-    if(stepCount == 21)
-    {
-        ui->stopButton->click();
-    }
+    //if(stepCount == 21)
+    //{
+    //    ui->stopButton->click();
+    //}
 }

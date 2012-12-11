@@ -21,8 +21,8 @@ void NBodyPanel::resizeGL(int w, int h)
     glViewport(0, 0, w, h);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluPerspective(45.0f, ((float)w) / h, 1.0f, 10000.0f);
-    gluLookAt(0.0, 0.0, -5000.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0);
+    gluPerspective(45.0f, ((float) w )/h, 1.0f, 1000.0f);
+    gluLookAt(0.0, 0.0, -2.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0);
 
 }
 
@@ -42,7 +42,7 @@ void NBodyPanel::paintGL()
     glBegin(GL_POINTS);
     for(int i = 0; i < bodyCount; i++)
     {
-        glVertex3f(positions[i * 4], positions[i * 4 + 1], positions[i * 4 + 2]);
+        glVertex3f(positions[i * 4]/300, positions[i * 4 + 1]/300, positions[i * 4 + 2]/300);
     }
     glEnd();
 
