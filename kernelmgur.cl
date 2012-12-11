@@ -3,124 +3,125 @@ __kernel void nbody (__global float3* l_c_p,__global float3* l_c_v,__global floa
 	int g = get_global_id(0);
 	if (g < s)
 	{
-		float3 positionv= l_c_p[g];
+		float3 posiionv= l_c_p[g];
 		float3 velocityv= l_c_v[g];
 		float3 delta;
-		float3 accel = (float3) (0.0f,0.0f,0.0f);
-		
+		float3 accel = (float3) (0.0f,0.0f,0.0f);		
 		float invcube;
-		int su = s / 8;
-		int ti;
-		for (int i = 0; i < su; i++)
+
+		int i = 0;
+		while (i < s)
 		{
-			ti = i*8;
-			delta = l_c_p[ti] - positionv;			
+			delta = l_c_p[i] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti + e * gid];
+			invcube *= m[i + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+1] - positionv;			
+			delta = l_c_p[i+1] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti +1 + e * gid];
+			invcube *= m[i +1 + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+2] - positionv;			
+			delta = l_c_p[i+2] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+2 + e * gid];
+			invcube *= m[i+2 + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+3] - positionv;			
+			delta = l_c_p[i+3] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+3 + e * gid];
+			invcube *= m[i+3 + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+4] - positionv;			
+			delta = l_c_p[i+4] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+4 + e * gid];
+			invcube *= m[i+4 + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+5] - positionv;			
+			delta = l_c_p[i+5] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti +5 + e * gid];
+			invcube *= m[i +5 + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+6] - positionv;			
+			delta = l_c_p[i+6] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+6 + e * gid];
+			invcube *= m[i+6 + e * gid];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+7] - positionv;			
+			delta = l_c_p[i+7] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+7 + e * gid];
+			invcube *= m[i+7 + e * gid];
 			accel += invcube * delta;
+		
+			i+=8;
 		}
 
-		int eu = e / 8;
-		for (int i = 0; i < eu; i++)
+		i = 0;
+		while (i < e)
 		{
-			ti = i*8;
-			delta = e_c_p[ti] - positionv;			
+			delta = e_c_p[i] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti + s * (1 - gid)];
+			invcube *= m[i + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = e_c_p[ti+1] - positionv;			
+			delta = e_c_p[i+1] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+1 + s * (1 - gid)];
+			invcube *= m[i+1 + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = e_c_p[ti+2] - positionv;			
+			delta = e_c_p[i+2] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+2 + s * (1 - gid)];
+			invcube *= m[i+2 + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = e_c_p[ti+3] - positionv;			
+			delta = e_c_p[i+3] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+3 + s * (1 - gid)];
+			invcube *= m[i+3 + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+4] - positionv;			
+			delta = l_c_p[i+4] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+4 + e * gid];
+			invcube *= m[i+4 + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+5] - positionv;			
+			delta = l_c_p[i+5] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti +5 + e * gid];
+			invcube *= m[i +5 + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+6] - positionv;			
+			delta = l_c_p[i+6] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+6 + e * gid];
+			invcube *= m[i+6 + s * (1 - gid)];
 			accel += invcube * delta;
 
-			delta = l_c_p[ti+7] - positionv;			
+			delta = l_c_p[i+7] - posiionv;			
 			invcube = rsqrt(dot(delta,delta)+ 500.0f);
 			invcube *= invcube *invcube;
-			invcube *= m[ti+7 + e * gid];
+			invcube *= m[i+7 + s * (1 - gid)];
 			accel += invcube * delta;
+
+			i+= 8;
 		}
 
-		positionv += dt * velocityv + (0.5f * dt * dt) * accel;
+		posiionv += dt * velocityv + (0.5f * dt * dt) * accel;
 		velocityv += dt * accel;
 
 
-		n_p[g] = positionv;
+		n_p[g] = posiionv;
 		n_v[g] = velocityv;
 	}
 }
